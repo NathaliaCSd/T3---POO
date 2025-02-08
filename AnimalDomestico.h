@@ -1,30 +1,51 @@
-#ifndef ANIMALDOMESTICO_H
-#define ANIMALDOMESTICO_H
+#ifndef ANIMALDOMESTICO_H  
+#define ANIMALDOMESTICO_H  
 
-#include <string>
-#include <iostream>
-using namespace std;
+#include <string>  
+#include <iostream> 
+using namespace std;  
 
-#include "Pessoa.h"
+#include "Pessoa.h"  
 
+// Definição da classe AnimalDomestico
 class AnimalDomestico {
 public:
+    // Construtor da classe AnimalDomestico
+    // Inicializa os atributos nome, peso, idade e tutor
     AnimalDomestico(string nome, double peso, int idade, Pessoa& tutor);
-    virtual ~AnimalDomestico();
-    string getNome() const;
-    void setNome(string nome);
-    double getPeso() const;
-    void setPeso(double peso);
-    Pessoa& getTutor() const;
-    void setDono(Pessoa* Tutor);
-    virtual string getEspecie() const = 0; //metodo abstrato
-    virtual void imprime() const;
-private:
-    Pessoa* tutor;
-    string nome;
-    double peso;
-    int idade;
 
+    // Destruidor virtual, necessário para destruição adequada em classes derivadas
+    virtual ~AnimalDomestico();
+
+    // Método para obter o nome do animal
+    string getNome() const;
+
+    // Método para modificar o nome do animal
+    void setNome(string nome);
+
+    // Método para obter o peso do animal
+    double getPeso() const;
+
+    // Método para modificar o peso do animal
+    void setPeso(double peso);
+
+    // Método para obter o tutor do animal
+    Pessoa& getTutor() const;
+
+    // Método para modificar o tutor do animal
+    void setDono(Pessoa* Tutor);
+
+    // Método abstrato para retornar a espécie do animal (deve ser implementado nas classes derivadas)
+    virtual string getEspecie() const = 0;
+
+    // Método para imprimir as informações do animal
+    virtual void imprime() const;
+
+private:
+    Pessoa* tutor;  // Ponteiro para o tutor do animal, representando a relação entre o animal e a pessoa responsável
+    string nome;    // Atributo para armazenar o nome do animal
+    double peso;    // Atributo para armazenar o peso do animal
+    int idade;      // Atributo para armazenar a idade do animal
 };
 
-#endif 
+#endif  // Fim da definição condicional do cabeçalho ANIMALDOMESTICO_H

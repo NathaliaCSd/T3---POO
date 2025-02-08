@@ -4,36 +4,54 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <cstring>
-
-#include "AnimalDomestico.h"
-#include "Pessoa.h"
-
-enum TipoCadastro { Tutor = 1, Animal = 2 };
+#include "AnimalDomestico.h" 
+#include "Pessoa.h" 
 
 using namespace std;
 
 class Cadastro {
 private:
-    int indice(int CPF);
-    vector<Pessoa> tutor;
-    string nomeArq;
-    void grava(void* dados, size_t tamanho);
-    void recupera();
-public:
-    Cadastro(string fileName);
-    virtual ~Cadastro();
-    void adiciona(int tipo);
-    bool adicionaTutor();
-    bool adicionaAnimal(const AnimalDomestico& animal, int cpfTutor);
-    void imprime(int CPF);
-    void remove(int tipo);
-    bool removeTutor(int CPF);
-    bool removeAnimal(const string &nomeAnimal);
-    void atualiza(int tipo);
-    bool atualizaTutor(int CPF);
-    bool atualizaAnimal(string nome);
-};
+    // Vetores que armazenam os tutores e animais cadastrados
+    vector<Pessoa*> tutores; 
+    vector<AnimalDomestico*> animais; 
+    string nomeArquivo; // Nome do arquivo onde os dados serão armazenados
+    
+    // Métodos privados responsáveis por buscar o índice do tutor e do animal
+    int indiceTutor(int CPF); 
+    int indiceAnimal(string nomeAnimal);
+    
+    // Método privado para salvar os dados no arquivo
+    void salvarArquivo();
+    
+    // Método privado para carregar os dados do arquivo
+    void carregarArquivo();
 
+public:
+    // Construtor que recebe o nome do arquivo a ser utilizado
+    Cadastro(string fileName);
+    
+    // Destruidor responsável por liberar a memória alocada
+    ~Cadastro();
+    
+    // Métodos públicos para adicionar tutor e animal
+    bool adicionaTutor(Pessoa* novoTutor);
+    bool adicionaAnimal(AnimalDomestico* animal, int cpfTutor);
+    
+    // Métodos públicos para imprimir informações sobre os tutores e animais
+    void imprimeTutores() const;
+    void imprimeAnimais() const;
+    
+    // Métodos públicos para remover tutor e animal
+    bool removeTutor(int CPF);
+    bool removeAnimal(string nomeAnimal);
+    
+    // Métodos públicos para atualizar os dados do tutor e do animal
+    bool atualizaTutor(int CPF, string novoNome);
+    bool atualizaAnimal(string nomeAnimal, string novoNome);
+    
+    // Métodos públicos para carregar e salvar dados
+    void carregarDados();
+    void salvarDados() const;
+};
 
 #endif /* CADASTRO_H */
