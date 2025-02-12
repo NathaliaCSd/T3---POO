@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include "Pessoa.h"  
 
 // Construtor da classe Pessoa
@@ -35,3 +36,27 @@ void Pessoa::imprime() const {
     cout << "Nome:  " << nome << endl;  // Imprime o nome da pessoa
     cout << "CPF: " << CPF << endl;  // Imprime o CPF da pessoa
 }
+=======
+#include "Pessoa.h"
+
+Pessoa::Pessoa(std::string nome, std::string endereco, std::string telefone)
+    : nome(nome), endereco(endereco), telefone(telefone) {}
+
+std::string Pessoa::getNome() const {
+    return nome;
+}
+
+std::string Pessoa::getEndereco() const {
+    return endereco;
+}
+
+std::string Pessoa::getTelefone() const {
+    return telefone;
+}
+
+void Pessoa::exibirInfo() const {
+    std::cout << "Nome do Tutor: " << nome << "\n";
+    std::cout << "Endereco: " << endereco << "\n";
+    std::cout << "Telefone: " << telefone << "\n";
+}
+>>>>>>> 154301e (Trocando por trabalho refeito)
