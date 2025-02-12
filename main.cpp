@@ -1,41 +1,4 @@
-<<<<<<< HEAD
-#include <iostream>   
-#include <fstream>    
-#include "Cadastro.h" 
-
-using namespace std; 
-
-int main(void) {
-   short opcao; 
-
-   // Abre o arquivo "infos.dat" em modo leitura binária, se o arquivo não existir, ele será criado mais tarde
-   fstream arquivo("infos.dat", ios_base::in | ios_base::binary); 
-
-   // Verifica se a abertura do arquivo falhou (ou seja, se o arquivo não existe)
-   if(arquivo.fail()) {   
-      criarArquivo(); // Se o arquivo não existir, chama a função 'criarArquivo()' para criar o arquivo
-   }
-
-   do {
-      // Exibe o menu e armazena a opção escolhida pelo usuário
-      opcao = menu(); 
-
-      // Executa uma ação de acordo com a opção selecionada
-      switch(opcao) {  
-         case 1: cadastrar();     break; // Se opção for 1, chama a função 'cadastrar()' para realizar cadastro
-         case 2: pesquisarNome(); break; // Se opção for 2, chama a função 'pesquisarNome()' para pesquisar pelo nome
-         case 3: pesquisarData(); break; // Se opção for 3, chama a função 'pesquisarData()' para pesquisar pela data
-         case 4: remover();       break; // Se opção for 4, chama a função 'remover()' para remover um cadastro
-         case 5: alterar();       break; // Se opção for 5, chama a função 'alterar()' para alterar um cadastro
-      }
-   } while (opcao); // Continua a exibir o menu enquanto a opção for diferente de zero (o usuário pode escolher sair com a opção 0)
-
-   arquivo.close(); // Fecha o arquivo "infos.dat" após a execução do programa
-   return 0; // Retorna 0 para indicar que o programa terminou com sucesso
-}
-=======
-
-//main.cpp
+// Exemplo de correção para a inserção de dados no seu código
 #include <iostream>
 #include "Cadastro.h"
 #include "Gato.h"
@@ -61,7 +24,7 @@ int main() {
     do {
         exibirMenu();
         cin >> opcao;
-        cin.ignore();
+        cin.ignore();  // Limpar buffer para a leitura de string após um número
         switch (opcao) {
             case 1: {
                 int codigo, idade;
@@ -71,38 +34,40 @@ int main() {
                 
                 cout << "Codigo de registro: ";
                 cin >> codigo;
-                cin.ignore();
+                cin.ignore();  // Limpar buffer após ler int
 
-                    //MUDADO A ORDEM DAS PERGUNTAS
                 cout << "Tipo de animal (1 - Gato, 2 - Peixe): ";
                 int tipoAnimal;
                 cin >> tipoAnimal;
-                cin.ignore();
+                cin.ignore();  // Limpar buffer após ler int
                 
                 cout << "Nome do animal: ";
-                getline(cin, nome);
+                getline(cin, nome);  // Lê o nome do animal
                 
                 cout << "Idade: ";
                 cin >> idade;
+                cin.ignore();  // Limpar buffer após ler int
                 
                 cout << "Sexo (M/F): ";
                 cin >> sexo;
+                cin.ignore();  // Limpar buffer após ler char
                 
                 cout << "Peso: ";
                 cin >> peso;
-                cin.ignore();
+                cin.ignore();  // Limpar buffer após ler float
 
                 // Informações do tutor
                 string nomeTutor, endereco, telefone;
                 cout << "Nome do tutor: ";
                 getline(cin, nomeTutor);
+
                 cout << "Endereco do tutor: ";
                 getline(cin, endereco);
+
                 cout << "Telefone do tutor: ";
                 getline(cin, telefone);
 
                 Pessoa* tutor = new Pessoa(nomeTutor, endereco, telefone);
-
 
                 if (tipoAnimal == 1) {
                     bool ronroneia, usaCaixa;
@@ -111,9 +76,11 @@ int main() {
                     cin >> ronroneia;
                     cout << "Usa caixa de areia? (1 - Sim, 0 - Não): ";
                     cin >> usaCaixa;
+                    cin.ignore();  // Limpar buffer após ler bool
+
                     cout << "Raca: ";
-                    cin.ignore();  // Limpar o buffer
                     getline(cin, raca);
+
                     cout << "Tipo de pelo: ";
                     getline(cin, pelo);
 
@@ -123,10 +90,11 @@ int main() {
                 } else if (tipoAnimal == 2) {
                     string escamas, temperatura, especie;
                     cout << "Tipo de escamas: ";
-                    cin.ignore();  // Limpar o buffer
                     getline(cin, escamas);
+
                     cout << "Temperatura da agua: ";
                     getline(cin, temperatura);
+
                     cout << "Especie: ";
                     getline(cin, especie);
 
@@ -171,4 +139,3 @@ int main() {
 
     return 0;
 }
->>>>>>> 154301e (Trocando por trabalho refeito)
