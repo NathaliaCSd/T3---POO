@@ -113,7 +113,6 @@ int main() {
                 cout << "Digite o codigo do animal a ser atualizado: ";
                 cin >> codigo;
                 cadastro.atualizarAnimal(codigo);
-                cout << "Dados atualizados com sucesso!\n";
                 break;
             }
             case 4: {
@@ -126,11 +125,9 @@ int main() {
             }
             case 5:
                 cadastro.salvarArquivo("animais.dat");
-                cout << "Dados salvos com sucesso!\n";
                 break;
             case 6:
                 cadastro.carregarArquivo("animais.dat");
-                cout << "Dados carregados com sucesso!\n";
                 break;
             case 7:
                 cout << "Saindo...\n";
