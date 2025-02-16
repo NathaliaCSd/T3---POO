@@ -1,4 +1,3 @@
-// Exemplo de correção para a inserção de dados no seu código
 #include <iostream>
 #include "Cadastro.h"
 #include "Gato.h"
