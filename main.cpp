@@ -106,6 +106,7 @@ int main() {
             }
             case 2:
                 cadastro.listarAnimais();
+                cout << "Dados listados com sucesso!\n";
                 break;
             case 3: {
                 int codigo;
@@ -120,13 +121,16 @@ int main() {
                 cout << "Digite o codigo do animal a ser removido: ";
                 cin >> codigo;
                 cadastro.removerAnimal(codigo);
+                cout << "Animal removido com sucesso!\n";
                 break;
             }
             case 5:
                 cadastro.salvarArquivo("animais.dat");
+                cout << "Dados salvos com sucesso!\n";
                 break;
             case 6:
                 cadastro.carregarArquivo("animais.dat");
+                cout << "Dados carregados com sucesso!\n";
                 break;
             case 7:
                 cout << "Saindo...\n";
